@@ -45,7 +45,6 @@ Or by `locate` but run `ubdatedb` first
 
 ```
 locate "/etc/*.conf"
-
 ```
 -8 Enable numbering lines in vim.
 Ans:
