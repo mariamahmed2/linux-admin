@@ -4,7 +4,7 @@
 ## Users and groups
 ### What is a user?
 The user associated with a running process determins the file and directories accessible to that process.
-- `id` to show info about the current user
+- `id` to show info about the current user and group
 - `name` info about a specific user
 ```
 $ id <name>
@@ -14,13 +14,13 @@ $ id <name>
 
 The operating system tracks the user by ID in `/etc/passwd`
 It contains of 7 fields:
-1- username
-2- password: encrypted and stored in /etc/shadow
-3- UID: user id
-4- GID: user's primary group id
-5- GECOS: user's real name
-6- /home/dir
-7- shell
+1 - username
+2 - password: encrypted and stored in /etc/shadow
+3 - UID: user id
+4 - GID: user's primary group id
+5 - GECOS: user's real name
+6 - /home/dir
+7 - shell
 
 ### What is a group?
 - defined in /etc/group
@@ -28,3 +28,22 @@ It contains of 7 fields:
 - the user may be a member of 0,1,2.. supplementry groups
 
 ## Gaining Superuser Access
+- `su <-> <username>` to change user
+-  `sudo` allow users to run command as root based on /etc/sudoers file, all users under wheel group can use sudo
+    - all commands excuted by `sudo` are logged to /var/log/secure 
+ 
+ ## Mnaging Local User Accounts
+ -`useradd <username>` to add a new user, can not login until set a password, rules from /etc/login.defs file
+ - `usermod` modifies exiting users
+ - `userdel -r <name>` removes the user from /etc/passwd and `-r` to remove the home dir its important for avoid info leakage and security issues.
+ --> issue: if I delete a user that has a home dir and add another user, the new one takes the same id and owns the old home dir.
+ --> sol: - remove all unknoun files after deleting user
+          - assin them to root by `find / -nouser -o -nogroup 2> /dev/null`     
+- `passwd <username>` set or change password
+
+## UID ranges
+- 0 to root
+- 1-200 "system users" processes
+- 201-999 "system users" processes that do not have file system
+- 1000+ regular users
+ 
