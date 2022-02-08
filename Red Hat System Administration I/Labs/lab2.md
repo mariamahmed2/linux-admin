@@ -74,4 +74,4 @@ usermod -aG finance ahmed
 
 ## Documenation
 - in Q1 I am tried `cp dir{1,2,3} /tmp` it shows an error `cp: omitting directory 'directory'`, cp copies only the direct files in, and not subdirectories in the directory. so recursive must be used.
-mv /tmp/dir{1,2,3} /opt
+
