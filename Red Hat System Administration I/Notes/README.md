@@ -14,13 +14,13 @@ $ id <name>
 
 The operating system tracks the user by ID in `/etc/passwd`
 It contains of 7 fields:
-1 - username
-2 - password: encrypted and stored in /etc/shadow
-3 - UID: user id
-4 - GID: user's primary group id
-5 - GECOS: user's real name
-6 - /home/dir
-7 - shell
+- 1 username
+- 2 password: encrypted and stored in /etc/shadow
+- 3 UID: user id
+- 4 GID: user's primary group id
+- 5 GECOS: user's real name
+- 6 /home/dir
+- 7 shell
 
 ### What is a group?
 - defined in /etc/group
@@ -35,9 +35,9 @@ It contains of 7 fields:
  ## Mnaging Local User Accounts
  -`useradd <username>` to add a new user, can not login until set a password, rules from /etc/login.defs file
  - `usermod` modifies exiting users
- - `userdel -r <name>` removes the user from /etc/passwd and `-r` to remove the home dir its important for avoid info leakage and security issues.
- --> issue: if I delete a user that has a home dir and add another user, the new one takes the same id and owns the old home dir.
- --> sol: - remove all unknoun files after deleting user
+ - `userdel -r <name>` removes the user from /etc/passwd and `-r` to remove the home dir its important for avoid info leakage and         security issues.
+     - issue: if I delete a user that has a home dir and add another user, the new one takes the same id and owns the old home dir.
+     - sol: - remove all unknoun files after deleting user
           - assin them to root by `find / -nouser -o -nogroup 2> /dev/null`     
 - `passwd <username>` set or change password
 
