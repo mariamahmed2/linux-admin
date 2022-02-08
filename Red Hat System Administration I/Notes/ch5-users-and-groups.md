@@ -39,7 +39,7 @@ It contains of 7 fields:
      - issue: if I delete a user that has a home dir and add another user, the new one takes the same id and owns the old home dir.
      - sol: - remove all unknoun files after deleting user
           - assin them to root by `find / -nouser -o -nogroup 2> /dev/null`     
-- `passwd <username>` set or change password
+          - `passwd <username>` set or change password
 
 ## UID ranges
 - 0 to root
@@ -47,3 +47,24 @@ It contains of 7 fields:
 - 201-999 "system users" processes that do not have file system
 - 1000+ regular users
  
+ ## Managing local Group Accounts
+ - `groupadd <groupname> -g <GID>` to add group, `-g` to set id, and `-r` automatic from  the system
+ - `groupmod -n <new> <old name>` to change group name 
+ -  `groupdel` to delete a group, and it will not be removed if it is a primary group
+ -  `usermod -g <groupname> <username>` change primary group
+ -  `usermod -aG <groupname> <username>` add user to supgroup, `a` for append and without it the user would be removed from all other    supgroups
+ 
+## Managing User Passwords
+passwords are encrypted in hashes in /etc/shadow
+```
+$1$gCjLa2/Z$6Pu0EK0AzfCjxjv2hoLOB/
+```
+- 1 `$1$` the hashing algorithm, 1 for MD5, and 6 for SHA-512
+- 2  `gCjLa2/Z` salt used to encrypt the hash, handel 2 users with same password
+- 3 `6Pu0EK0AzfCjxjv2hoLOB/` the encrypted hash 
+
+- `chage -d 0 <username>` force a pass update on the next login
+- `chage -l <username>` list settings
+- `chage -E yyyt-mm-dd` expire an account on that date -- lock account with `usermod -L`
+- `data -d "+45 days"` calculate date in the future
+---- nologin shell
