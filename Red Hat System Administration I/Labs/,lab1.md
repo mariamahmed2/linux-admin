@@ -1,6 +1,6 @@
-#Lab1
+# Lab1
 -----
-##Write the appropriate commands to do the following:
+## Write the appropriate commands to do the following:
 ---------------------------------------------------
 -1 print your working directory.
 Ans: 
