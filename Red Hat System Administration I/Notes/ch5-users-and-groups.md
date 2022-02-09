@@ -67,4 +67,4 @@ $1$gCjLa2/Z$6Pu0EK0AzfCjxjv2hoLOB/
 - `chage -l <username>` list settings
 - `chage -E yyyt-mm-dd` expire an account on that date -- lock account with `usermod -L`
 - `data -d "+45 days"` calculate date in the future
----- nologin shell
+---- nologin shell?
