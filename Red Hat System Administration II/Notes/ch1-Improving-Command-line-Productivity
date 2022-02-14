@@ -1,0 +1,40 @@
+## CHAPTER 1
+
+# Improving Command-line Productivity
+______________________________________________________________________________________________________
+
+1. ## Bash Scripts
+- `#!/bin/bash` she-bange command interpreter needed to process this script's lines.
+- `chmod` changes the permission `chown` changes ownership.
+- `which <filename>` displays the path.
+- For using special characters `\ backslash` or `''`, `""`, ex:
+```
+[user@host ~]$ echo # not a comment
+
+[user@host ~]$ echo \# not a comment
+# not a comment
+```
+    - `''` interprets all text literally
+    - `""` marks to suppress globbing and shell expansion, but still allow command and variable substitution
+```
+[user@host ~]$ var=$(hostname -s); echo $var
+host
+
+[user@host ~]$ echo "***** hostname is ${var} *****"
+***** hostname is host *****
+
+[user@host ~]$ echo Your username variable is \$USER.
+Your username variable is $USER.
+
+[user@host ~]$ echo "Will variable $var evaluate to $(hostname -s)?"
+Will variable host evaluate to host?
+
+[user@host ~]$ echo 'Will variable $var evaluate to $(hostname -s)?'
+Will variable $var evaluate to $(hostname -s)?
+
+[user@host ~]$ echo "\"Hello, world\""
+"Hello, world"
+
+[user@host ~]$ echo '"Hello, world"'
+"Hello, world"
+```
