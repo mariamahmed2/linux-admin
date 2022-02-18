@@ -3,7 +3,7 @@ Ans:
 ```
 parted /dev/sdb
 (parted) mklabel msdos
-parted /dev/sdb mkpart primary xfs 2048s 2GB
+parted /dev/sdc mkpart primary xfs 2048s 2GB
 ```
 
 2-Run a command so that the system detects the previous changes (create the device under /dev).
@@ -36,19 +36,30 @@ lsblk --fs
 ```
 6-Format a device called "/dev/sdc3" to become a swap space. 
 Ans:
-```parted /dev/sdb mkpart primary linux-swap 1GB 0.2GB
+```parted /dev/sdc3 mkpart primary linux-swap 1GB 2GB
 
 ```
 
 7-Activate the previous swap space and make sure it will mount permanently.
 Ans:
+```
+mkswap /dev/sdc3
+swapon /dev/sdc3
+```
+To be mounted permanently, open `fstab` then add it using its UUID
 
 8-Label the following two devices as PVs (Physical volumes): "/dev/sdd1" and "/dev/sdd2"
 Ans:
-
+```
+pvcreate /dev/sdd1 /dev/sdd2
+```
 9-Extend the following logical volume "/dev/vg01/lv01" by 7GB.
 Ans:
-
+```
+lvextend -L7G /dev/vg01/lv01
+```
 10-Remove the following logical volume "/dev/vg01/lv01".
 Ans:
- 
+ ```
+ lvremove dev/vg01/lv01
+ ```
