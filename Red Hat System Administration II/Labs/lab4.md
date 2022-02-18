@@ -36,8 +36,8 @@ lsblk --fs
 ```
 6-Format a device called "/dev/sdc3" to become a swap space. 
 Ans:
-```parted /dev/sdc3 mkpart primary linux-swap 1GB 2GB
-
+```
+parted /dev/sdc3 mkpart primary linux-swap 1GB 2GB
 ```
 
 7-Activate the previous swap space and make sure it will mount permanently.
