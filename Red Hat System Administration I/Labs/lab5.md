@@ -43,7 +43,9 @@ Ans:
 ```
 9-Reload the configuration of a connection and then restart it in one line.
 Ans:
-
+```
+  /etc/init.d/networking restart
+```
 10-Using a command called "date" , display the date of your system 3 years ago.
 Ans:
   ```
